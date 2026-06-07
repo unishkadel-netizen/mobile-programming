@@ -1,53 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Result Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Marks Calculator</title>
 </head>
 <body>
-    <h2>Student Result Calculator</h2>
 
-    <input type="number" id="m1" placeholder="Subject 1"><br><br>
-    <input type="number" id="m2" placeholder="Subject 2"><br><br>
-    <input type="number" id="m3" placeholder="Subject 3"><br><br>
-    <input type="number" id="m4" placeholder="Subject 4"><br><br>
-    <input type="number" id="m5" placeholder="Subject 5"><br><br>
-    <input type="number" id="m6" placeholder="Subject 6"><br><br>
-    <input type="number" id="m7" placeholder="Subject 7"><br><br>
-    <input type="number" id="m8" placeholder="Subject 8"><br><br>
+    <h2>Student Marks Calculator</h2>
 
-    <button onclick="calculateResult()">Calculate Result</button>
+    <input type="number" id="m1" placeholder="Subject 1 Marks"><br><br>
+    <input type="number" id="m2" placeholder="Subject 2 Marks"><br><br>
+    <input type="number" id="m3" placeholder="Subject 3 Marks"><br><br>
+    <input type="number" id="m4" placeholder="Subject 4 Marks"><br><br>
+    <input type="number" id="m5" placeholder="Subject 5 Marks"><br><br>
+    <input type="number" id="m6" placeholder="Subject 6 Marks"><br><br>
+    <input type="number" id="m7" placeholder="Subject 7 Marks"><br><br>
+    <input type="number" id="m8" placeholder="Subject 8 Marks"><br><br>
 
-    <p id="total"></p>
-    <p id="result"></p>
+    <button onclick="calculateResult()">Submit</button>
 
-    <script src="script.js"></script>
+    <h3 id="total"></h3>
+    <h3 id="result"></h3>
 
-    <hr>
+    <script>
+        function calculateResult() {
 
-    <h2>Calculator using if/else</h2>
+            let m1 = Number(document.getElementById("m1").value);
+            let m2 = Number(document.getElementById("m2").value);
+            let m3 = Number(document.getElementById("m3").value);
+            let m4 = Number(document.getElementById("m4").value);
+            let m5 = Number(document.getElementById("m5").value);
+            let m6 = Number(document.getElementById("m6").value);
+            let m7 = Number(document.getElementById("m7").value);
+            let m8 = Number(document.getElementById("m8").value);
 
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
+            let total = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8;
 
-    <br><br>
+            document.getElementById("total").innerHTML =
+                "Total Marks: " + total;
 
-    <button onclick="calculate('+')">Add</button>
-    <button onclick="calculate('-')">Subtract</button>
-    <button onclick="calculate('*')">Multiply</button>
-    <button onclick="calculate('/')">Divide</button>
+            let resultText = "";
+            let color = "black";
 
-    <h3 id="calcResult">Result: </h3>
+            if (total > 700) {
+                resultText = "Distinction";
+                color = "green";
+            }
+            else if (total > 600) {
+                resultText = "First Division";
+            }
+            else if (total >= 500) {
+                resultText = "Second Division";
+            }
+            else if (total >= 400) {
+                resultText = "Third Division";
+            }
+            else {
+                resultText = "Fail";
+                color = "red";
+            }
 
-    <hr>
+            document.getElementById("result").innerHTML =
+                "Result: " + resultText;
 
-    <h2>jQuery Animation</h2>
-    <button id="animateBtn">Animate</button>
-    <div id="animationArea">
-        <div id="box"></div>
-    </div>
+            document.getElementById("result").style.color = color;
+        }
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="animation.js"></script>
 </body>
 </html>
