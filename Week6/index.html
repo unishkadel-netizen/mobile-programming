@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase CRUD</title>
+  </head>
+  <body>
+    <h1>Firebase CRUD Example</h1>
+
+    <input type="text" id="firstName" placeholder="First Name" /><br /><br />
+    <input type="text" id="lastName" placeholder="Last Name" /><br /><br />
+    <input type="email" id="email" placeholder="Email" /><br /><br />
+    <input type="text" id="address" placeholder="Address" /><br /><br />
+    <input
+      type="text"
+      id="phoneNumber"
+      placeholder="Phone Number"
+    /><br /><br />
+    <input type="number" id="age" placeholder="Age" /><br /><br />
+    <input type="text" id="gender" placeholder="Gender" /><br /><br />
+    <input type="text" id="nationality" placeholder="Nationality" /><br /><br />
+    <input type="text" id="language" placeholder="Language" /><br /><br />
+    <input type="text" id="subject" placeholder="Subject" /><br /><br />
+
+    <button onclick="addUser()">Add User</button>
+    <button onclick="getUser()">Get User</button>
+    <button onclick="updateUser()">Update User</button>
+    <button onclick="deleteUser()">Delete User</button>
+
+    <pre id="output"></pre>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

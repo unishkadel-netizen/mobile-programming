@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation Sequence</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+
+        $("button").click(function(){
+
+            var div = $("div");
+
+            div.css({
+                top: "0px",
+                left: "0px",
+                backgroundColor: "#98bf21",
+                opacity: 1
+            });
+
+            // 1. MOVE DOWN
+            div.animate({ top: "200px", opacity: 0.3 }, 1500, function(){
+
+                div.css("background-color", "red");
+
+                // 2. MOVE RIGHT
+                div.animate({ left: "200px", opacity: 1 }, 1500, function(){
+
+                    div.css("background-color", "blue");
+
+                    // 3. MOVE UP
+                    div.animate({ top: "0px", opacity: 0.5 }, 1500, function(){
+
+                        div.css("background-color", "orange");
+
+                        // 4. MOVE LEFT (back to origin)
+                        div.animate({ left: "0px", opacity: 1 }, 1500, function(){
+
+                            div.css("background-color", "#98bf21");
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    });
+    </script>
+
+</head>
+
+<body>
+
+    <button>Start Animation</button>
+
+    <br><br>
+
+    <div style="height:100px;width:100px;background:#98bf21;position:relative;">
+    </div>
+
+</body>
+</html>

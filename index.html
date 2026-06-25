@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+</head>
+<body>
+
+    <h2>Student Marks Calculator</h2>
+
+    <input type="number" id="m1" placeholder="Subject 1 Marks"><br><br>
+    <input type="number" id="m2" placeholder="Subject 2 Marks"><br><br>
+    <input type="number" id="m3" placeholder="Subject 3 Marks"><br><br>
+    <input type="number" id="m4" placeholder="Subject 4 Marks"><br><br>
+    <input type="number" id="m5" placeholder="Subject 5 Marks"><br><br>
+    <input type="number" id="m6" placeholder="Subject 6 Marks"><br><br>
+    <input type="number" id="m7" placeholder="Subject 7 Marks"><br><br>
+    <input type="number" id="m8" placeholder="Subject 8 Marks"><br><br>
+
+    <button onclick="calculateResult()">Submit</button>
+
+    <h3 id="total"></h3>
+    <h3 id="result"></h3>
+
+    <script>
+        function calculateResult() {
+
+            let m1 = Number(document.getElementById("m1").value);
+            let m2 = Number(document.getElementById("m2").value);
+            let m3 = Number(document.getElementById("m3").value);
+            let m4 = Number(document.getElementById("m4").value);
+            let m5 = Number(document.getElementById("m5").value);
+            let m6 = Number(document.getElementById("m6").value);
+            let m7 = Number(document.getElementById("m7").value);
+            let m8 = Number(document.getElementById("m8").value);
+
+            let total = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8;
+
+            document.getElementById("total").innerHTML =
+                "Total Marks: " + total;
+
+            let resultText = "";
+            let color = "black";
+
+            if (total > 700) {
+                resultText = "Distinction";
+                color = "green";
+            }
+            else if (total > 600) {
+                resultText = "First Division";
+            }
+            else if (total >= 500) {
+                resultText = "Second Division";
+            }
+            else if (total >= 400) {
+                resultText = "Third Division";
+            }
+            else {
+                resultText = "Fail";
+                color = "red";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Result: " + resultText;
+
+            document.getElementById("result").style.color = color;
+        }
+    </script>
+
+</body>
+</html>

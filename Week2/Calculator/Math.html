@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .calc-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .calc-inputs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    .calc-inputs input {
+      flex: 1;
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      text-align: center;
+      width: 0;
+    }
+
+    .calc-inputs input::placeholder {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .calc-inputs input:focus {
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-grid button {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      transition: transform 0.1s, opacity 0.1s;
+    }
+
+    .btn-grid button:active {
+      transform: scale(0.96);
+      opacity: 0.85;
+    }
+
+    .btn-add { background: #43b89c; }
+    .btn-sub { background: #e07b5d; }
+    .btn-mul { background: #5b8dee; }
+    .btn-div { background: #a67ce8; }
+
+    .result-box {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .result-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 4px;
+    }
+
+    .result-val {
+      font-size: 26px;
+      font-weight: 500;
+      color: #fff;
+      min-height: 36px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calc-card">
+    <h1>Calculator</h1>
+
+    <div class="calc-inputs">
+      <input type="number" id="num1" placeholder="First">
+      <input type="number" id="num2" placeholder="Second">
+    </div>
+
+    <div class="btn-grid">
+      <button class="btn-add" onclick="calc('+')">+ Addition</button>
+      <button class="btn-sub" onclick="calc('-')">− Subtraction</button>
+      <button class="btn-mul" onclick="calc('*')">× Multiply</button>
+      <button class="btn-div" onclick="calc('/')">÷ Divide</button>
+    </div>
+
+    <div class="result-box">
+      <p class="result-label">Result</p>
+      <p class="result-val" id="result">—</p>
+    </div>
+  </div>
+
+  <script>
+    function calc(op) {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('result').textContent = 'Enter both numbers';
+        return;
+      }
+
+      let res;
+      if (op === '+') res = a + b;
+      else if (op === '-') res = a - b;
+      else if (op === '*') res = a * b;
+      else {
+        if (b === 0) {
+          document.getElementById('result').textContent = 'Cannot divide by 0';
+          return;
+        }
+        res = a / b;
+      }
+
+      document.getElementById('result').textContent = parseFloat(res.toFixed(10)).toString();
+    }
+  </script>
+
+</body>
+</html>
