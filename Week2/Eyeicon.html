@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ATM System using jQuery</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+
+body{
+    text-align:center;
+    font-family:Arial;
+    margin-top:50px;
+}
+
+.container{
+    width:300px;
+    margin:auto;
+    border:1px solid black;
+    padding:20px;
+}
+
+button{
+    padding:8px 15px;
+    margin:10px;
+}
+
+#amountBox{
+    display:none;
+}
+
+.eye{
+    font-size:25px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>ATM System</h2>
+
+<h3>
+Balance: <span id="balance">******</span>
+
+<span class="eye" id="eye">🙈</span>
+</h3>
+
+<button id="depositBtn">Deposit</button>
+
+<button id="withdrawBtn">Withdraw</button>
+
+<div id="amountBox">
+
+<input type="number" id="amount" placeholder="Enter amount">
+
+<br><br>
+
+<button id="submitBtn">Submit</button>
+
+</div>
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+let balance = 5000;
+let visible = false;
+let action="";
+
+$("#eye").click(function(){
+
+if(visible){
+
+$("#balance").text("******");
+$("#eye").text("🙈");
+visible=false;
+
+}
+else{
+
+$("#balance").text(balance);
+$("#eye").text("👁️");
+visible=true;
+
+}
+
+});
+
+
+$("#depositBtn").click(function(){
+
+action="deposit";
+$("#amountBox").show();
+
+});
+
+
+$("#withdrawBtn").click(function(){
+
+action="withdraw";
+$("#amountBox").show();
+
+});
+
+
+$("#submitBtn").click(function(){
+
+let amount = Number($("#amount").val());
+
+if(action=="deposit"){
+
+balance += amount;
+
+}
+
+else if(action=="withdraw"){
+
+if(amount<=balance){
+
+balance -= amount;
+
+}
+else{
+
+alert("Insufficient Balance");
+return;
+
+}
+
+}
+
+if(visible){
+
+$("#balance").text(balance);
+
+}
+
+$("#amount").val("");
+
+alert(action+" successful");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

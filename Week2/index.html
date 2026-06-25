@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple ATM</title>
+</head>
+<body>
+
+    <h2>ATM System</h2>
+
+    <h3 id="balance">Current Balance: 10000</h3>
+
+    <input type="number" id="amount" placeholder="Enter amount">
+    <br><br>
+
+    <button onclick="withdrawMoney()">Withdraw</button>
+    <button onclick="depositMoney()">Deposit</button>
+
+<script>
+
+let balance = 10000;
+let pin = "1234";
+
+function withdrawMoney() {
+
+    let amount = Number(document.getElementById("amount").value);
+
+    if(amount <= 0){
+        alert("Enter valid amount");
+        return;
+    }
+
+    if(amount % 100 !== 0){
+        alert("Amount must be multiple of 100");
+        return;
+    }
+
+    if(amount > balance){
+        alert("Insufficient Balance");
+        return;
+    }
+
+    let userPin = prompt("Enter PIN");
+
+    if(userPin == pin){
+
+        balance = balance - amount;
+
+        document.getElementById("balance").innerText =
+        "Current Balance: " + balance;
+
+        alert("Withdrawal Successful");
+
+    }else{
+        alert("Wrong PIN");
+    }
+}
+
+function depositMoney(){
+
+    let amount = Number(document.getElementById("amount").value);
+
+    if(amount <= 0){
+        alert("Enter valid amount");
+        return;
+    }
+
+    if(amount % 100 !== 0){
+        alert("Amount must be multiple of 100");
+        return;
+    }
+
+    let userPin = prompt("Enter PIN");
+
+    if(userPin == pin){
+
+        balance = balance + amount;
+
+        document.getElementById("balance").innerText =
+        "Current Balance: " + balance;
+
+        alert("Deposit Successful");
+
+    }else{
+        alert("Wrong PIN");
+    }
+}
+
+</script>
+
+</body>
+</html>
