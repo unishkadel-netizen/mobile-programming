@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>GymApp</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="phone">
+
+  <!-- ══════════════════════════════════
+       SIGN IN SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-signin" class="screen active">
+    <div class="scroll-content">
+      <div class="content safe-top">
+
+        <!-- Logo -->
+        <div class="logo-circle">
+          <i class="fa-solid fa-dumbbell"></i>
+        </div>
+
+        <h1>Welcome back!!</h1>
+        <p class="subtitle">Sign in to continue</p>
+
+        <div class="form">
+          <label class="field-label" style="margin-top:0">Email</label>
+          <input class="text-input" id="si-email" type="email"
+                 value="Unish@email.com" placeholder="Email" />
+
+          <label class="field-label">Password</label>
+          <div class="password-row">
+            <input id="si-password" type="password"
+                   value="password123" placeholder="Password" />
+            <button class="eye-btn" onclick="toggleEye()">
+              <i class="fa-regular fa-eye" id="eye-icon"></i>
+            </button>
+          </div>
+
+          <button class="forgot-link">Forgot Password</button>
+
+          <button class="btn-primary" onclick="go('home')">Sign in</button>
+
+          <p class="or-text">or use one of your social profiles</p>
+
+          <div class="social-row">
+            <button class="social-btn" style="background:var(--twitter)">
+              <i class="fa-brands fa-twitter"></i> Twitter
+            </button>
+            <button class="social-btn" style="background:var(--facebook)">
+              <i class="fa-brands fa-facebook-f"></i> Facebook
+            </button>
+          </div>
+
+          <div class="signup-row">
+            <span>No Account?&nbsp;</span>
+            <button class="link-btn" onclick="go('create')">Sign Up</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /screen-signin -->
+
+
+  <!-- ══════════════════════════════════
+       CREATE ACCOUNT SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-create" class="screen">
+    <div class="scroll-content">
+      <div class="content safe-top" style="padding:50px 28px 30px">
+
+        <h1>Create Account</h1>
+
+        <label class="field-label" style="margin-top:0">Full Name</label>
+        <input class="text-input" type="text"
+               value="Unish Kadel" placeholder="Full Name" />
+
+        <label class="field-label">Email</label>
+        <input class="text-input" type="email"
+               value="Unish@mail.com" placeholder="Email" />
+
+        <label class="field-label">Phone</label>
+        <input class="text-input" type="tel"
+               value="+977 98XXXXXXXX" placeholder="Phone" />
+
+        <label class="field-label">Password</label>
+        <input class="text-input" type="password"
+               value="password123" placeholder="Password" />
+
+        <div class="checkbox-row" onclick="toggleCheck(this)">
+          <div class="checkbox checked">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <p class="agree-text">
+            I agree to the <a href="#">Terms of Services</a> and
+            <a href="#">Privacy Policy.</a>
+          </p>
+        </div>
+
+        <button class="btn-primary" onclick="go('home')">Continue</button>
+
+        <div class="signin-row" style="margin-top:24px">
+          <span>Have an Account?&nbsp;</span>
+          <button class="link-btn" onclick="go('signin')">Sign In</button>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /screen-create -->
+
+
+  <!-- ══════════════════════════════════
+       HOME SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-home" class="screen">
+
+    <div class="top-bar safe-top">
+      <button class="icon-btn" onclick="go('members')">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <button class="icon-btn">
+        <i class="fa-regular fa-bell"></i>
+      </button>
+    </div>
+
+    <div class="scroll-content px20">
+      <p class="greeting">Hello, Unish 👋</p>
+      <p class="sub-greeting">Ready for today's workout?</p>
+
+      <!-- Streak Card -->
+      <div class="streak-card">
+        <div class="streak-header">
+          <div class="streak-left">
+            <i class="fa-solid fa-fire"></i>
+            <span class="streak-title">43 Days streak</span>
+          </div>
+          <span class="badge badge-Active">Active</span>
+        </div>
+        <div class="week-row">
+          <div class="day-circle" style="background:#e74c3c"><span>S</span></div>
+          <div class="day-circle" style="background:#e74c3c"><span>M</span></div>
+          <div class="day-circle" style="background:#2ecc71"><span>T</span></div>
+          <div class="day-circle" style="background:#3498db"><span>W</span></div>
+          <div class="day-circle" style="background:#2ecc71"><span>T</span></div>
+          <div class="day-circle" style="background:#2ecc71"><span>F</span></div>
+          <div class="day-circle" style="background:#2ecc71"><span>S</span></div>
+        </div>
+      </div>
+
+      <!-- Live Busy Card -->
+      <div class="card">
+        <div class="busy-header">
+          <i class="fa-solid fa-circle live-dot"></i>
+          <span class="busy-title">Live Busy</span>
+        </div>
+        <p class="busy-sub">40 members currently in the gym</p>
+        <div class="bars-row">
+          <div class="bar-wrap"><div class="bar" style="height:20px"></div></div>
+          <div class="bar-wrap"><div class="bar" style="height:33px"></div></div>
+          <div class="bar-wrap"><div class="bar" style="height:15px"></div></div>
+          <div class="bar-wrap"><div class="bar" style="height:40px"></div></div>
+          <div class="bar-wrap"><div class="bar" style="height:25px"></div></div>
+          <div class="bar-wrap"><div class="bar" style="height:10px"></div></div>
+        </div>
+        <div class="bars-label">
+          <span>6 AM</span><span>12 PM</span><span>6 PM</span>
+        </div>
+      </div>
+
+      <!-- Subscription Card -->
+      <div class="card">
+        <div class="sub-header">
+          <span class="sub-label">My Subscription</span>
+          <span class="badge badge-Active">Active</span>
+        </div>
+        <p class="sub-days" id="home-days-left">55 Days Left</p>
+        <p class="sub-plan">Gym / Aerobic / Zumba</p>
+        <p class="sub-price">NPR 24,500</p>
+        <div class="progress-bg">
+          <div class="progress-fill" id="home-progress-fill"></div>
+        </div>
+        <p class="progress-label">Membership progress</p>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-tab active" onclick="go('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+      <button class="nav-tab" onclick="go('members')">
+        <i class="fa-solid fa-users"></i>
+      </button>
+      <button class="nav-tab" onclick="go('scan')">
+        <i class="fa-solid fa-qrcode"></i>
+      </button>
+      <button class="nav-tab" onclick="go('schedule')">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      <button class="nav-tab" onclick="go('profile')">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </nav>
+
+  </div><!-- /screen-home -->
+
+
+  <!-- ══════════════════════════════════
+       MEMBERS SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-members" class="screen">
+
+    <div class="top-bar safe-top">
+      <button class="icon-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <span class="top-bar-title">Members</span>
+      <button class="icon-btn" onclick="go('schedule')">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="member-search" type="text"
+             placeholder="Search members…"
+             oninput="filterMembers(this.value)" />
+    </div>
+
+    <div class="member-list" id="member-list">
+      <!-- rendered by script.js -->
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-tab" onclick="go('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+      <button class="nav-tab active" onclick="go('members')">
+        <i class="fa-solid fa-users"></i>
+      </button>
+      <button class="nav-tab" onclick="go('scan')">
+        <i class="fa-solid fa-qrcode"></i>
+      </button>
+      <button class="nav-tab" onclick="go('schedule')">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      <button class="nav-tab" onclick="go('profile')">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </nav>
+
+  </div><!-- /screen-members -->
+
+
+  <!-- ══════════════════════════════════
+       PROFILE SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-profile" class="screen">
+
+    <div class="top-bar safe-top">
+      <button class="icon-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <span class="top-bar-title">Profile</span>
+      <div style="width:32px"></div>
+    </div>
+
+    <div class="scroll-content">
+      <div class="profile-content">
+
+        <div class="profile-avatar">
+          <span>UK</span>
+        </div>
+        <p class="profile-name">Unish Kadel</p>
+        <p class="member-since">Member since Jan 2018</p>
+
+        <div class="package-card">
+          <p class="pkg-label">Package</p>
+          <p class="pkg-value">Gym / Aerobic / Zumba</p>
+          <p class="expires-label">Expires</p>
+          <p class="expires-value" id="profile-expires">12 Sep 2026 &bull; 55 days left</p>
+        </div>
+
+        <button class="btn-green" onclick="renewMembership()">
+          <i class="fa-solid fa-rotate-right" style="margin-right:8px"></i>
+          Renew Membership
+        </button>
+
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-tab" onclick="go('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+      <button class="nav-tab" onclick="go('members')">
+        <i class="fa-solid fa-users"></i>
+      </button>
+      <button class="nav-tab" onclick="go('scan')">
+        <i class="fa-solid fa-qrcode"></i>
+      </button>
+      <button class="nav-tab" onclick="go('schedule')">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      <button class="nav-tab active" onclick="go('profile')">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </nav>
+
+  </div><!-- /screen-profile -->
+
+
+  <!-- ══════════════════════════════════
+       SCHEDULE SCREEN
+  ══════════════════════════════════ -->
+  <div id="screen-schedule" class="screen">
+
+    <div class="top-bar safe-top">
+      <button class="icon-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <span class="top-bar-title">Schedule</span>
+      <button class="icon-btn" onclick="go('members')">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+    <!-- Week day picker (built by script.js) -->
+    <div class="week-row-sched" id="week-days"></div>
+    <p class="date-label" id="date-label">Wednesday, 16 Jun</p>
+
+    <div class="class-list">
+
+      <!-- Aerobics -->
+      <div class="class-card" style="border-left-color:var(--blue)"
+           onclick="go('profile')">
+        <div class="class-header">
+          <span class="class-name">Aerobics</span>
+          <span class="class-status-pill" style="background:var(--blue)">2 spots</span>
+        </div>
+        <p class="class-time">
+          <i class="fa-regular fa-clock" style="margin-right:4px"></i>
+          6:00 PM – 6:30 PM
+        </p>
+        <div class="instructor-row">
+          <div class="instr-avatar" style="background:var(--blue)">RK</div>
+          <span class="instr-name">Rushal K.</span>
+        </div>
+      </div>
+
+      <!-- Strength Training -->
+      <div class="class-card" style="border-left-color:var(--green)"
+           onclick="go('profile')">
+        <div class="class-header">
+          <span class="class-name">Strength Training</span>
+          <span class="class-status-pill" style="background:var(--green)">Open</span>
+        </div>
+        <p class="class-time">
+          <i class="fa-regular fa-clock" style="margin-right:4px"></i>
+          8:00 AM – 10:30 AM
+        </p>
+        <div class="instructor-row">
+          <div class="instr-avatar" style="background:var(--green)">EY</div>
+          <span class="instr-name">Eren Y.</span>
+        </div>
+      </div>
+
+      <!-- Zumba Dance -->
+      <div class="class-card" style="border-left-color:var(--red)"
+           onclick="go('profile')">
+        <div class="class-header">
+          <span class="class-name">Zumba Dance</span>
+          <span class="class-status-pill" style="background:var(--red)">Booked</span>
+        </div>
+        <p class="class-time">
+          <i class="fa-regular fa-clock" style="margin-right:4px"></i>
+          6:00 PM – 7:00 PM
+        </p>
+        <div class="instructor-row">
+          <div class="instr-avatar" style="background:var(--red)">NS</div>
+          <span class="instr-name">Nitesh S.</span>
+        </div>
+      </div>
+
+    </div><!-- /class-list -->
+
+    <nav class="bottom-nav">
+      <button class="nav-tab" onclick="go('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+      <button class="nav-tab" onclick="go('members')">
+        <i class="fa-solid fa-users"></i>
+      </button>
+      <button class="nav-tab" onclick="go('scan')">
+        <i class="fa-solid fa-qrcode"></i>
+      </button>
+      <button class="nav-tab active" onclick="go('schedule')">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      <button class="nav-tab" onclick="go('profile')">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </nav>
+
+  </div><!-- /screen-schedule -->
+
+
+  <!-- ══════════════════════════════════
+       SCAN SCREEN (Gym Door Entry)
+  ══════════════════════════════════ -->
+  <div id="screen-scan" class="screen">
+
+    <div class="top-bar safe-top">
+      <button class="icon-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <span class="top-bar-title">Scan to Enter</span>
+      <div style="width:32px"></div>
+    </div>
+
+    <div class="scroll-content">
+      <div class="scan-content">
+
+        <p class="scan-instructions">
+          Point your camera at the gym entrance QR code to unlock the door
+        </p>
+
+        <div class="scanner-frame" id="scanner-frame">
+          <div class="scanner-viewport" id="scanner-viewport">
+            <div class="scanner-corner tl"></div>
+            <div class="scanner-corner tr"></div>
+            <div class="scanner-corner bl"></div>
+            <div class="scanner-corner br"></div>
+            <div class="scanner-line" id="scanner-line"></div>
+
+            <div class="scanner-result" id="scanner-result">
+              <div class="door-icon-wrap">
+                <i class="fa-solid fa-door-open"></i>
+              </div>
+              <p class="scan-success-text">Door Unlocked</p>
+              <p class="scan-success-sub">Welcome in, Unish!</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="scan-status" id="scan-status">Tap below to start scanning</p>
+
+        <button class="btn-primary" id="scan-btn" onclick="startScan()">
+          <i class="fa-solid fa-qrcode" style="margin-right:8px"></i>
+          Scan QR Code
+        </button>
+
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-tab" onclick="go('home')">
+        <i class="fa-solid fa-house"></i>
+      </button>
+      <button class="nav-tab" onclick="go('members')">
+        <i class="fa-solid fa-users"></i>
+      </button>
+      <button class="nav-tab active" onclick="go('scan')">
+        <i class="fa-solid fa-qrcode"></i>
+      </button>
+      <button class="nav-tab" onclick="go('schedule')">
+        <i class="fa-solid fa-calendar-days"></i>
+      </button>
+      <button class="nav-tab" onclick="go('profile')">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </nav>
+
+  </div><!-- /screen-scan -->
+
+</div><!-- /phone -->
+
+<!-- App logic -->
+<script src="script.js"></script>
+</body>
+</html>
